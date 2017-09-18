@@ -1,0 +1,74 @@
+<section class="container home-container">
+  <h1 class="welcome">Hello, {{name}}!</h1>
+
+<section class="container">
+  <div class="container snip-container">
+  <h3>Your Snips</h3>
+  <form class="form-group form-inline viewby-filter" action="/app/snip/viewBy" method="post">
+    <h5>Filter by Tag or Language</h5>
+    <select class="category form-control" name="filter">
+      <option value="">Select</option>
+      {{#languages}}
+      <option value="{{.}}">{{.}}</option>
+      {{/languages}}
+    </select>
+    <input class="form-control btn btn-primary" type="submit" name="submit" value="View">
+  </form>
+
+  <div class="createnew-go">
+    <a href="#createnew" class="form-control btn btn-primary" id="createnew-btn">Create New Snip</a>
+  </div>
+
+  <div class="snips-list">
+    {{#snips}}
+    <ul class="list-unstyled one-snip">
+      <li class="snip-title"><b><a href="/app/editSnip/{{_id}}"> {{title}}</a></b></li>
+      <li class="snip-body">{{body}}</li>
+      <li><b>Language: </b>{{language}}</li>
+      <li>
+        <ul class="list-unstyled">
+          <li><b>Tags</b></li>
+          {{#tags}}
+          <li class="tag">{{.}}</li>
+          {{/tags}}
+        </ul>
+      </li>
+      <li>
+        <ul class="list-unstyled notes-list">
+          <li><b>Notes</b></li>
+          {{#notes}}
+          <li>{{.}}</li>
+          {{/notes}}
+        </ul>
+      </li>
+      <li>
+        <form class="form-group" action="/app/editSnip/{{_id}}" method="get">
+        <input type="submit" name="edit" value="Edit this Snip" class="form-control btn btn-primary edit-btn">
+      </form>
+    </li>
+    </ul>
+    {{/snips}}
+  </div>
+  </div>
+  <div class="create-form">
+    <form class="form-group sign-in" action="/app/addsnip" method="post" id="createnew">
+      <h3>Create a New Snip</h3>
+      <div class="form-group create-snip container">
+        <div class="col-md-6 column-one">
+          <input type="hidden" name="userId" value="{{id}}">
+          <input type="text" name="title" value="" placeholder="Title" class="form-control">
+          <div class="form-control container textarea-container">
+            <textarea name="body" value="" placeholder="Body" class="form-control snip-text"></textarea>
+          </div>
+        </div>
+        <div class="col-md-6 column-two">
+          <input type="text" name="language" value="" placeholder="Language" class="form-control">
+          <input type="text" name="tags" value="" placeholder="Tags (please separate with a comma)" class="form-control">
+          <input type="text" name="notes" value="" placeholder="Notes" class="form-control">
+        </div>
+        <input type="submit" name="view" value="Create!" id="create-btn-submit" class="form-control btn btn-primary">
+      </div>
+    </form>
+  </div>
+</section>
+</section>

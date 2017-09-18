@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="clearFloat"></div>
+  <div class="sqlpic"></div>
+  {{msg}}
+  <form class="" action="/signup" method="post">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" value="" id="name" placeholder="Username">
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" value="" id="password" placeholder="password">
+    </div>
+    <div>
+      <label for="confirmPassword">Confirm Password</label>
+      <input type="password" name="confirmPassword" value="" id="confirmPw" placeholder="retype your password">
+    </div>
+    <div>
+      <input type="submit" name="" value="Submit">
+    </div>
+  </form>
+
+  {{{header}}}
+</body>
+
+</html>
